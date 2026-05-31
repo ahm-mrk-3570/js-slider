@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #333;
+  color: white;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+.slider {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.slide.current {
+  opacity: 1;
+}
+
+.slide .content {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(to bottom, transparent, black);
+  position: absolute;
+  bottom: -300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.slide.current .content {
+  bottom: 0;
+  opacity: 1;
+  animation: animate 1s forwards;
+}
+
+@keyframes animate {
+  from {
+    bottom: -300px;
+    height: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 0;
+    height: 300px;
+    opacity: 1;
+  }
+}
+
+.slide.current .content > h1 {
+  font-size: 3rem;
+}
+
+.slide:first-child {
+  background: url('/image/01.jpg') no-repeat center center/cover;
+}
+.slide:nth-child(2) {
+  background: url('/image/02.jpg') no-repeat center center/cover;
+}
+.slide:nth-child(3) {
+  background: url('/image/03.jpg') no-repeat center center/cover;
+}
+.slide:nth-child(4) {
+  background: url('/image/04.jpg') no-repeat center center/cover;
+}
+.slide:nth-child(5) {
+  background: url('/image/05.jpg') no-repeat center center/cover;
+}
+.slide:last-child {
+  background: url('/image/06.jpg') no-repeat center center/cover;
+}
+
+.buttons {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  padding: 0 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prev, .next {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: white;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+}
+
+i {
+  scale: 1.5;
+}
